@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hello World!</title>
+        <style>
+            /* CSS Comment */
+
+            /* 1. tag name */
+            header {
+                color: blue;
+                font-size: 20px;
+            }
+
+            /* 2. select all */
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
+            /* 3. id selector */
+            #foot {
+                background-color: black;
+                color: white;
+            }
+
+            /* 4. class selector */
+            .art {
+                font-size: 30px;
+                color: green;
+            }
+
+            /* 5. parent - child */
+            ol > li {
+                color: orange;
+            }
+
+            p > b {
+                color: blue;
+            }
+        </style>
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body style = "margin-bottom: 1000px;">
+
+        <!-- 시맨틱 태그 -->
+        <header id = "header">header</header>
+        <nav style = "color: red;">nav</nav>
+        <b><aside>aside</aside></b>
+
+            <!-- 보통 article은 section 내부로 들어간다. -->
+        <section>
+            section
+            <article class = "art">article1</article>
+            <article class = "art">article2</article>
+            <article class = "art">article3</article>
+        </section>
+
+        <footer id = "foot">footer</footer>
+
+        <!-- non-semantic tag -->
+        <div>
+            div
+        </div>
+<hr>
+        <!-- heading (제목 크기) -->
+        <h1>Hi, there! (h1)</h1>
+        <h2>Hi, there! (h2)</h2>
+        <h3>Hi, there! (h3)</h3>
+        <h4>Hi, there! (h4)</h4>
+        <h5>Hi, there! (h5)</h5>
+        <h6>Hi, there! (h6)</h6>
+<hr>
+        <!-- 본문 태그 -->
+        <p>
+            본문1<br>
+            본문4<hr>
+        </p>
+        <p>본문2</p>
+        <p>본문3</p>
+<hr>
+        <!-- 글자 꾸미기 -->
+        <p>
+            b 태그는 <b>굵은 글씨(bold)</b>를 나타냅니다.
+            strong 태그도 <strong>굵은 글씨(bold)</strong>를 나타냅니다.
+        </p>
+        <p>
+            i 태그는 <i>기울어진 글씨(italic)를 나타냅니다.</i>
+            em 태그도 <em>기울어진 글씨(italic)를 나타냅니다.</em>
+        </p>
+        <p>
+            del 태그는 <del>취소한 글씨(delete)를 나타냅니다.</del>
+        </p>
+        <p>
+            굵고 기울어진 글씨는 <b><i>b 태그와 i 태그를 합쳐서 나타냅니다.</i></b>
+        </p>
+<hr>
+        <!-- 목록 <ol, ordered list> -->
+        <ol>
+            <li>첫번째</li>
+            <li>두번째</li>
+            <li>세번째</li>
+        </ol>
+
+        <!-- 목록 <ul, unordered list> -->
+        <!-- "list-style-type: 원하는 스타일; -->
+        <ul style = "list-style-type: square;">
+            <li>치킨</li>
+            <li>피자</li>
+            <li>햄버거</li>
+        </ul>
+<hr>
+        <!--  링크 태그 -->
+        <!--  target = "_blank": 새창에서 띄우기, target = "_self": 본화면에서 띄우기 -->
+        <a href = "https://google.com", target = "_blank">구글로 가자</a><br>
+        <!--  href = "/abc/index2.html" 처럼 특정 폴더를 지정할 수 있다. -->
+        <a href = "index2.html">Index 2로 가자!</a><br>
+        <a href="#header">header로 가자!</a><br>
+        <a href="mailto:youngdong9800@gmail.com">메일 쓰기</a>
+<hr>
+        <!-- 미디어 파일 -->
+        <!-- 사진 파일 -->
+        <img src = "1234.jpg", art = "김유정", width = "300"><br>
+
+        <!-- 비디오 파일, 요즘은 잘 사용하지 않는 태그 -->
+        <video src = ""></video><br>
+
+        <!-- iframe 파일 -->
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/r-ylCn39dXA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <br>
+<hr>
+        <!-- Form, 예시) 로그인 입력창 -->
+        <form action = "index2.html">
+            <input type = "text" name = "username"><br>
+            <input type = "password" name = "password"><br>
+            <input type = "submit">
+        </form>
+    </body>
+</html>

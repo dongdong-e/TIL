@@ -1,6 +1,6 @@
 # Read File
 
-# 1. open files()
+# # 1. open files()
 f = open('mulcam.txt', 'r')
 all_text = f.read()
 print(all_text)

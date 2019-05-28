@@ -6,8 +6,10 @@ headers = {
 }
 
 response = requests.get('https://www.melon.com/chart/index.htm', headers = headers).text
+
 soup = bs4.BeautifulSoup(response, 'html.parser')
 songs = soup.select('#lst50')
+
 
 with open('melon_rank.csv', 'w', encoding = 'utf-8') as f:
     for song in songs:
