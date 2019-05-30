@@ -60,7 +60,7 @@ def lotto_result():
         result = "꽝입니다. 다음 기회에..."
 
 
-    return render_template('lotto_result.html', lotto = winner, lotto_round = lotto_round, my_numbers = my_numbers, result = result)
+    return render_template('lotto_result.html', lotto_round = lotto_round, lotto = winner, my_numbers = my_numbers, result = result)
 
 if __name__ == '__main__':
     app.run(debug=True)
