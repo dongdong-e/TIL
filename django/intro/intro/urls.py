@@ -15,23 +15,11 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
-from pages import views
+from django.urls import path, include
 
 # 끝에 항상 콤마 필수!
 urlpatterns = [
+    path('utilities/', include('utilities.urls')),
+    path('pages/', include('pages.urls')),
     path('admin/', admin.site.urls),
-    path('index/', views.index),
-    path('hola/', views.hola),
-    path('dinner/', views.dinner),
-    path('hello/<name>/', views.hello),
-    path('introduce/<name>/<int:age>/', views.introduce),
-    path('times/<int:num1>/<int:num2>/', views.times),
-    path('area/<int:num1>/', views.area),
-    path('template_language/', views.template_language),
-    path('birth_day/', views.birth_day),
-    path('throw/', views.throw),
-    path('catch/', views.catch),
-    path('lotto/', views.lotto),
-    path('lotto_number/', views.lotto_number),
 ]
