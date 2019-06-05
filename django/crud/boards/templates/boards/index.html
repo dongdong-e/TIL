@@ -1,0 +1,10 @@
+{% extends 'boards/base.html' %}
+
+{% block body %}
+<h1 class="text-center">Boards</h1>
+<hr>
+<a href="/boards/new/">[글작성]</a><br>
+{% for i in Boards %}
+    {{ i.pk }} {{ i.title }}<br>
+{% endfor %}
+{% endblock %}
