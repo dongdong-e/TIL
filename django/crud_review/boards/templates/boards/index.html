@@ -3,11 +3,11 @@
 {% block body %}
 <h1 class="text-center">Boards</h1>
 <hr>
+<a href="/boards/new/">[글작성]</a><br>
 {% for board in Boards %}
-    글 번호:<p>{{ board.pk }} </p><br>
-    글 제목:<p>{{ board.title }}</p><br>
+    글 번호:<span>{{ board.pk }} </span><br>
+    글 제목:<span>{{ board.title }}</span><br>
     <a href="/boards/{{ board.pk }}">[글 상세 보기]</a>
     <hr>
 {% endfor %}
-<a href="/boards/new/">[글작성]</a><br>
 {% endblock %}

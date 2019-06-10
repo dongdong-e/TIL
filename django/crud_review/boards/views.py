@@ -1,7 +1,8 @@
+# 필요한 라이브러리 호출
 from django.shortcuts import render, redirect
-from .models import Board
+from .models import Board # models.py에 있는 Board class 호출
 
-
+# 함수 만들기
 def index(request):
     # 장고는 기본적으로 templates 폴더에서 html 파일을 로딩한다.
     # 따라서, template 폴더가 위치한 boards 폴더에서 html 파일을 로딩해야 한다.
@@ -15,20 +16,16 @@ def index(request):
 def new(request):
     return render(request, 'boards/new.html')
 
-
+# create
 def create(request):
-    # 'title'은 dictionary 형태이므로 get으로 string을 뽑아온다.
     title = request.POST.get('title')
     content = request.POST.get('content')
 
     board = Board(title=title, content=content)
     board.save()
 
-    # return render(request, 'boards/create.html')
     return redirect(f'/boards/{board.pk}/')
 
-
-# 'pk'라는 인자를 받아오기 때문에 request 외에 pk를 추가한다.
 def detail(request, pk):
     board = Board.objects.get(pk=pk)
     context = {'board': board}

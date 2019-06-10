@@ -1,0 +1,13 @@
+{% extends 'boards/base.html' %}
+
+{% block body %}
+    <h1 class="text-center">INDEX</h1>
+    <hr>
+    {% for board in boards %}
+        <span>글 번호: {{ board.pk }}</span>
+        <span>글 제목: {{ board.title }}</span>
+        <a href="/boards/{{ board.pk }}/">[상세보기]</a>
+    <hr>
+    {% endfor%}
+    <a href="/boards/new/">[글 작성]</a>
+{% endblock %}
