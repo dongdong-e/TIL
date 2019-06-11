@@ -14,17 +14,16 @@ def index(request):
 
 # new: 사용자가 글을 입력하기 위한 함수
 def new(request):
-    return render(request, 'boards/new.html')
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        content = request.POST.get('content')
 
-# create
-def create(request):
-    title = request.POST.get('title')
-    content = request.POST.get('content')
+        board = Board(title=title, content=content)
+        board.save()
+        return redirect(f'/boards/{board.pk}/')
+    else:
+        return render(request, 'boards/new.html')
 
-    board = Board(title=title, content=content)
-    board.save()
-
-    return redirect(f'/boards/{board.pk}/')
 
 def detail(request, pk):
     board = Board.objects.get(pk=pk)

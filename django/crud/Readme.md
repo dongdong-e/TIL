@@ -466,4 +466,65 @@ board.delete()
 
 ---
 
-## **6. 게시글 개별 페이지 연결하기**
+## **댓글창 만들기**
+
+```python
+# 댓글창 만들기
+class Comment(models.Model):
+    # 댓글 내용
+    content = models.CharField(max_length=200)
+
+    # 댓글 작성시간
+    created_at = models.DateTimeField(auto_now_add=True)
+    # 댓글 수정시간
+    updated_at = models.DateTimeField(auto_now=True)
+
+    # 댓글이 달린 게시글의 외래키 설정
+    # on_delete=models.CASCADE: 게시글이 지워지면 댓글도 함께 지워짐
+    board = models.ForeignKey(Board, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'<Board{self.board_id}: Comment({self.id} - {self.content})>'
+```
+
+
+
+```python
+# 댓글 달아보기
+comment = Comment()
+comment.content = 'First comment'
+comment.board = board
+comment.save()
+```
+
+```python
+>>> comment
+<Comment: <Board16: Comment(1 - First comment)>
+        
+>>> comment.pk
+1
+
+>>> comment.content
+'first comment'
+
+>>> comment.board
+<Board: 16번글 - abcdefg : abcdefg>
+        
+>>> comment.board.id
+16
+```
+
+```python
+# 게시글에 달려있는 모든 댓글 가져오기
+>>> board.comment_set.all()
+<QuerySet [<Comment: <Board16: Comment(1 - First comment)>>, <Comment: <Board16: Comment(2 - second_coment)>>]>
+
+# 내용이 'third comment'인 댓글만 가져오기
+>>> board.comment_set.filter(content = 'third comment')
+<QuerySet [<Comment: <Board16: Comment(3 - third comment)>>]>
+
+# pk가 1인 댓글만 가져오기
+>>> board.comment_set.get(pk=1)
+<Comment: <Board16: Comment(1 - First comment)>>
+```
+
