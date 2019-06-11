@@ -10,7 +10,30 @@
     <span>수정시간: {{ board.updated_at }}</span><br>
     <hr>
 
-    <a href="/boards/{{ board.pk }}/delete">[글 삭제]</a><br>
-    <a href="/boards/{{ board.pk }}/edit">[글 수정]</a><br>
-    <a href="/boards/">[메인 페이지]</a>
+    <form action="{% url 'boards:comments_create' board.pk %}" method="POST">
+        {% csrf_token %}
+        댓글: <input type="text" name="content"><br>
+        <input type="submit" value="[작성]">
+    </form>
+    <hr>
+
+        <p><b>댓글 목록</b></p>
+        {% for comment in comments %}
+            <li>{{ comment.content }}</li>
+        {% endfor %}
+    <hr>
+
+    <form action="{% url 'boards:delete' board.pk %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="[글 삭제]">
+    </form><br>
+
+    <form action="{% url 'boards:edit' board.pk %}" method="GET">
+        <input type="submit" value="[글 수정]">
+    </form><br>
+
+    <form action="{% url 'boards:index' %}" method="GET">
+        <input type="submit" value="[메인 페이지]">
+    </form><br>
+
 {% endblock %}
