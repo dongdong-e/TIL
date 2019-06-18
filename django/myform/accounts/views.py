@@ -1,0 +1,71 @@
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm
+
+from .forms import UserCustomChangeForm
+
+from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout as auth_logout
+
+
+## 회원가입
+def signup(request):
+    if request.user.is_authenticated:
+        return redirect('boards:index')
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            auth_login(request, user)
+            return redirect('boards:index')
+    else:
+        form = UserCreationForm()
+    context = {'form':form}
+    return render(request, 'accounts/signup.html', context)
+
+
+## 로그인
+def login(request):
+    if request.user.is_authenticated:
+        return redirect('boards:index')
+
+    if request.method == 'POST':
+        form = AuthenticationForm(request, request.POST)
+        if form.is_valid():
+            # form.get_user(): user의 정보가 담겨 있음
+            auth_login(request, form.get_user())
+            return redirect('boards:index')
+    else:
+        form = AuthenticationForm()
+    context = {'form':form}
+    return render(request, 'accounts/login.html', context)
+
+
+## 로그아웃
+def logout(request):
+    if request.method == 'POST':
+        auth_logout(request)
+        return redirect('boards:index')
+    else:
+        return redirect('boards:index')
+
+
+## 회원정보 수정
+def edit(request):
+    if request.method == 'POST':
+        form = UserCustomChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('boards:index')
+    else:
+        form = UserCustomChangeForm(instance=request.user)
+    context = {'form':form}
+    return render(request, 'accounts/edit.html', context)
+
+
+## 회원탈퇴
+def delete(request):
+    if request.method == 'POST':
+        request.user.delete()
+        return redirect('boards:index')
+    else:
+        return redirect('boards:index')
