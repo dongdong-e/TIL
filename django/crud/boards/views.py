@@ -24,7 +24,7 @@ def create(request):
     board = Board(title=title, content=content)
     board.save()
 
-    # return render(request, 'boards/create.html')
+    # return render(request, 'boards/form.html')
     return redirect(f'/boards/{board.pk}/')
 
 

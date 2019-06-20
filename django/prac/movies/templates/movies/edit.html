@@ -1,0 +1,16 @@
+{% extends 'movies/base.html' %}
+
+{% block body %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        영화 제목: <input type="text" name="title" value="{{ movie.title }}"><br><br>
+        영어 제목: <input type="text" name="title_origin" value="{{ movie.title_origin }}"><br><br>
+        투표수: <input type="number" name="vote_count" value="{{ movie.vote_count }}"><br><br>
+        개봉일: <input type="date" name="open_date" value="{{ movie.open_date }}"><br><br>
+        장르: <input type="genre" name="genre" value="{{ movie.genre }}"><br><br>
+        평점: <input type="number" name="score"  value="{{ movie.score }}"><br><br>
+        포스터 주소: <input type="text" name="poster_url" value="{{ movie.poster_url }}"><br><br>
+        영화 설명: <textarea name="description" id="description" cols="30" rows="10">{{ movie.description }}</textarea><br><br>
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'boards/base.html' %}
+
+{% block body %}
+    <h1 class="text-center">INDEX</h1>
+    <hr>
+    <a href="{% url 'boards:new' %}">[글 작성]</a><br>
+    <hr>
+    {% for board in boards %}
+        <span>글 번호: {{ board.pk }}</span><br>
+        <span>글 제목: {{ board.title }}</span><br>
+        <a href="{% url 'boards:detail' board.pk %}">[상세보기]</a>
+        <hr>
+        <form action="{% url 'boards:delete' board.pk %}" method="POST">
+            {% csrf_token %}
+            <input type="submit" value="삭제하기">
+        </form>
+        <hr>
+    {% endfor%}
+{% endblock %}

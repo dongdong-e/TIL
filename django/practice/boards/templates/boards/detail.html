@@ -1,0 +1,25 @@
+{% extends 'boards/base.html' %}
+
+{% block body%}
+    <p>제목: {{ board.title }}</p>
+    <p>본문: {{ board.content }}</p>
+    <p>작성시간: {{ board.created_at }}</p>
+    <p>수정시간: {{ board.updated_at }}</p>
+    <hr>
+    {% for comment in comments %}
+        <b>댓글 {{ comment.pk }}:</b> {{ comment.content }}<br>
+        <a href="{% url 'boards:comment_edit' board.pk comment.pk %}">[수정하기]</a><br><hr>
+    {% endfor %}
+    <hr>
+    <form action="{% url 'boards:comment_new' board.pk %}" method="POST">
+        {% csrf_token %}
+        <input type="text" name='content' id="content"><br>
+        <input type="submit" value="등록">
+    </form>
+
+    <hr>
+    <a href="{% url 'boards:index' %}">[메인 페이지]</a>
+    <a href="{% url 'boards:edit' board.pk %}">[수정하기]</a>
+    <hr>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'boards/base.html' %}
+
+{% block body%}
+    <h1 class="text-center">COMMENT EDIT</h1><br>
+    <hr><br>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="content">Content</label><br>
+        <input type="text" id="content" name="content" value="{{ comment.content }}"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+{% endblock %}

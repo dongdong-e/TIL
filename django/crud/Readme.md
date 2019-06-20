@@ -500,7 +500,7 @@ comment.save()
 ```python
 >>> comment
 <Comment: <Board16: Comment(1 - First comment)>
-        
+
 >>> comment.pk
 1
 

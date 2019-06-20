@@ -17,9 +17,16 @@
     </form>
     <hr>
 
-        <p><b>댓글 목록</b></p>
+    <p><b>댓글 목록 | 현재 댓글수: {{ comments|length }}</b></p>
         {% for comment in comments %}
             <li>{{ comment.content }}</li>
+            <a href="{% url 'boards:comments_edit' board.pk comment.pk %}">수정</a>
+            <form action="{% url 'boards:comments_delete' board.pk comment.pk %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="삭제">
+            </form>
+        {% empty %}
+            <p><b>댓글이 없습니다.</b></p>
         {% endfor %}
     <hr>
 
