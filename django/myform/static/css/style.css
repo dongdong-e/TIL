@@ -1,21 +1,27 @@
 .polaroid {
-  position: relative;
-  width: 220px;
+    position: relative;
+    width: 600px;
+    margin: 20px;
+    -webkit-box-shadow: 3px 3px 3px #777;
+    -moz-box-shadow: 3px 3px 3px #777;
+    box-shadow: 3px 3px 3px #777;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 1.0;
+    background-color: white;
 }
 
 .polaroid img {
-  border: 10px solid #fff;
-  border-bottom: 45px solid #fff;
-  -webkit-box-shadow: 3px 3px 3px #777;
-     -moz-box-shadow: 3px 3px 3px #777;
-          box-shadow: 3px 3px 3px #777;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px;
+    padding-bottom: 10px;
 }
 
-.polaroid p {
-  position: absolute;
-  text-align: center;
-  width: 100%;
-  bottom: -6px;
-  font: 400 18px/1 'Kaushan Script', cursive;
-  color: #888;
+.polaroid div{
+    padding-bottom: 11px;
+    margin-left: 2em;
+    margin-right: 2em;
 }
+

@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UserChangeForm, PasswordChangeForm
 
 from .forms import UserCustomChangeForm
+# 비밀번호 변경 후, 로그인을 유지하기 위한 함수 import
+from django.contrib.auth import update_session_auth_hash
 
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
@@ -15,12 +17,13 @@ def signup(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
+            # 회원가입 후 로그인 상태 유지하기
             auth_login(request, user)
             return redirect('boards:index')
     else:
         form = UserCreationForm()
     context = {'form':form}
-    return render(request, 'accounts/signup.html', context)
+    return render(request, 'accounts/accounts_form.html', context)
 
 
 ## 로그인
@@ -33,11 +36,11 @@ def login(request):
         if form.is_valid():
             # form.get_user(): user의 정보가 담겨 있음
             auth_login(request, form.get_user())
-            return redirect('boards:index')
+            return redirect(request.GET.get('next') or 'boards:index')
     else:
         form = AuthenticationForm()
     context = {'form':form}
-    return render(request, 'accounts/login.html', context)
+    return render(request, 'accounts/accounts_form.html', context)
 
 
 ## 로그아웃
@@ -59,7 +62,23 @@ def edit(request):
     else:
         form = UserCustomChangeForm(instance=request.user)
     context = {'form':form}
-    return render(request, 'accounts/edit.html', context)
+    return render(request, 'accounts/accounts_form.html', context)
+
+
+## 비밀번호 변경
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            # 비밀번호 변경 후에도 로그인 상태 유지
+            # 회원가입 후에 로그인 유지하는 것과 비슷함: signup 참고
+            update_session_auth_hash(request, user)
+            return redirect('boards:index')
+    else:
+        form = PasswordChangeForm(request.user)
+    context = {'form':form}
+    return render(request, 'accounts/accounts_form.html', context)
 
 
 ## 회원탈퇴

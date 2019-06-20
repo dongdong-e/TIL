@@ -1,5 +1,5 @@
 from django import forms
-from .models import Board
+from .models import Board, Comment
 
 
 class BoardForm(forms.ModelForm):
@@ -27,30 +27,7 @@ class BoardForm(forms.ModelForm):
         fields = ['title', 'content']
 
 
-
-
-
-# class BoardForm(forms.Form):
-#     title = forms.CharField(
-#         max_length=10,
-#         label='제목',
-#         widget=forms.TextInput(
-#             attrs={
-#                 'class':'title',
-#                 'placeholder':'Enter the title',
-#             }
-#         )
-#     )
-#
-#     content = forms.CharField(
-#         label='내용',
-#         widget=forms.Textarea(
-#             attrs={
-#                 'class':'content-type',
-#                 'rows':5,
-#                 'cols':50,
-#                 'placeholder':'Enter the content',
-#             }
-#         )
-#     )
-
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
