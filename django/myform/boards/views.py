@@ -103,5 +103,22 @@ def comments_delete(request, board_pk, comment_pk):
     return redirect('boards:detail', board_pk)
 
 
+@login_required
+def like(request, board_pk):
+    board = get_object_or_404(Board, pk=board_pk)
+
+    # exists(): 하나라도 존재하는지 확인하는 것
+    # board.like_users.filter(pk=user.pk).exists():
+    if request.user in board.like_users.all():
+        board.like_users.remove(request.user)
+    else:
+        board.like_users.add(request.user)
+    return redirect('boards:index')
+
+
+
+
+
+
 def photo(request):
     return render(request, 'boards/photo.html')
