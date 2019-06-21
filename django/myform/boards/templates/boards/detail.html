@@ -25,6 +25,9 @@
     {% endfor %}
     <hr>
 
+    {% include 'boards/_profile.html' %}
+
+    <hr>
     {% if user.is_authenticated %}
         <h3>댓글 작성</h3>
         <form action="{% url 'boards:comments_create' board.pk %}" method="POST">

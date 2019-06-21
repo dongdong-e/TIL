@@ -13,11 +13,20 @@
 }
 
 .polaroid img {
+    position:relative;
     box-sizing: border-box;
     width: 100%;
     padding: 20px;
     padding-bottom: 10px;
 }
+
+.polaroid .text {
+    position:absolute;
+    bottom:80px;
+    right:-5px;
+    color:#ff9400;
+}
+
 
 .polaroid div{
     padding-bottom: 11px;
@@ -25,3 +34,11 @@
     margin-right: 2em;
 }
 
+
+.header img{
+    position:relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px;
+    padding-bottom: 10px;
+}

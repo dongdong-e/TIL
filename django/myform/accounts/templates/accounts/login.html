@@ -1,16 +1,24 @@
 {% extends 'boards/base.html' %}
 {% load bootstrap4 %}
+{% load socialaccount %}
+
 
 {% block body %}
-<h1>로그인</h1><br>
-<hr>
+
+<h1>로그인</h1>
+
 
 <form action="" method="POST">
     {% csrf_token %}
     {% bootstrap_form form %}
-
+    <hr>
     {% buttons %}
         <button type="submit" class="btn btn-primary">로그인</button>
     {% endbuttons %}
+    <hr>
+    <a href="{% url 'boards:index' %}" class="btn btn-primary">[메인 페이지]</a>
 </form>
+<a class="btn btn-warning" href="{% provider_login_url 'kakao' method='oauth2' %}">[카카오 로그인]</a>
+
+
 {% endblock %}
