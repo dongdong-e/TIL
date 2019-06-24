@@ -1,0 +1,25 @@
+{% extends 'login/base.html' %}
+
+{% block body %}
+<div class="container">
+<form action="" method="POST">
+    {% csrf_token %}
+
+    {% for p in photos %}
+        <div style="border: 1px; float: left; width: 25%;">
+        <div class="checkbox-wrapper">
+            <input type="checkbox"  name="cbox" value={{p.pk}}>
+            <span class="checkmark"></span>
+
+        </div>
+            <img src = "{{p.photo.url}}" width="300" height="300"><br>
+
+
+        </div>
+    {% endfor %}
+<hr>
+    <button type = "submit" class="btn btn-primary"  name="delete">delete</button>
+    <button type = "submit" class="btn btn-primary"  name="next">next</button>
+</form>
+</div>
+{% endblock %}

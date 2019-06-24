@@ -1,0 +1,13 @@
+{% extends 'login/base.html' %}
+
+{% block body %}
+<form action="" id="form1"method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<input type="file" name="img_files" accept = "image/*" multiple><br>
+    <button type="submit" name="upload">Submit</button>
+</form>
+
+
+
+{% endblock %}
+

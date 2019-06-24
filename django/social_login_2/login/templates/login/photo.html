@@ -1,0 +1,55 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Serendipity</title>
+    <style>
+        body { background-color: #065471; }
+        div { font-family: 'Nanum Brush Script', cursive; }
+        p { font-family: 'Over the Rainbow', cursive; font-size: 50%; opacity: 0.5; font-weight: 600;}
+        body { background-color: #065471; }
+        a img {border-radius:200px; margin:0 auto; overflow:hidden;}
+        .title_img { width: 100%; }
+    </style>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Nanum+Brush+Script|Nanum+Pen+Script|Over+the+Rainbow&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <img class="title_img" src="{% static 'login/images/header_logo.png' %}" alt="logo">
+    <br>
+    <div class="polaroid">
+        <img src="http://image.chosun.com/sitedata/image/201711/09/2017110901111_0.jpg"/>
+        <div class="text">
+            <p>2013년02월27일 오후3:00</p>
+        </div>
+        <b><div class="to">TO {{photo.info.to_name}}</div>
+        <b><div class="message" style="text-align:center">{{photo.info.message}}</div>
+        <b><div class="from" style="text-align:right">FROM: {{photo.info.from_name}}</div>
+    </div>
+    <br><br>
+    <div class="SNS_Share_Top hidden-xs" align="center">
+        <!-- Share on Twitter -->
+        <a href="#" onclick="javascript:window.open('https://twitter.com/intent/tweet?text=[%EA%B3%B5%EC%9C%A0]%20'
+        +encodeURIComponent(document.URL)+'%20-%20'+encodeURIComponent(document.title), 'twittersharedialog',
+         'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Twitter"><img src="{% static 'login/images/Twitter.png' %}"></a>
+
+
+        <!-- Share on Facebook -->
+        <a href="#" onclick="javascript:window.open('https://www.facebook.com/sharer/sharer.php?u='
+        +encodeURIComponent(document.URL)+'&amp;t='+encodeURIComponent(document.title), 'facebooksharedialog',
+         'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" target="_blank" alt="Share on Facebook">
+        <img src="{% static 'login/images/Facebook.png' %}"></a>
+
+
+        <!-- Share on Kakaostory -->
+        <a href="#" onclick="javascript:window.open('https://story.kakao.com/s/share?url='+encodeURIComponent(document.URL), 'kakaostorysharedialog', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=600');return false;" target="_blank" alt="Share on kakaostory">
+        <img src="{% static 'login/images/Kakao_Story.png' %}"></a>
+
+        <!-- download on device -->
+        <a href="http://image.chosun.com/sitedata/image/201711/09/2017110901111_0.jpg" download>
+        <img src="{% static 'login/images/download2.png' %}" alt="download"></a>
+    </div>
+</body>
+</html>

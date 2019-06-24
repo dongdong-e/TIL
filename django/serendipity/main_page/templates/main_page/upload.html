@@ -1,0 +1,22 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <title>Serendipity</title>
+    <style>
+        body { background-color: #065471; }
+        a img { display: block; margin: 0px auto; }
+        .title_img { width: 100%; }
+    </style>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <img class="title_img" src="{% static 'login/images/header_logo.png' %}" alt="logo">
+    <br><br><br><br><br><br>
+    <form action="" id="form1"method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="img_files" accept = "image/*" multiple><br>
+    <button type="submit" name="upload">업로드</button>
+</form>
+</body>
+</html>

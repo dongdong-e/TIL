@@ -1,0 +1,21 @@
+{% extends 'login/base.html' %}
+
+{% block body %}
+{% for photo in photos %}
+<div style="border: 1px; float: left; width: 25%;">
+    <img src = "{{photo.photo.url}}" width="300" height="300">
+</div>
+{% endfor %}
+<p>From: {{info_list.0.from_name}} 발신인 번호: {{info_list.0.phone_from}}</p>
+{% for info in info_list %}
+<p>To: {{info.to_name }} 수신인 번호: {{info.phone_to}} 메시지: {{info.message}}</p>
+{% endfor %}
+<p>기간 : {{info_list.0.period}}</p>
+<form action="" method="POST">
+    {% csrf_token %}
+    <button type="submit" name="edit">수정</button>
+    <button type="submit" name="confirm">확인</button>
+</form>
+
+
+{% endblock %}

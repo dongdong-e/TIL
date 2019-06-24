@@ -1,0 +1,29 @@
+{% extends 'login/base.html' %}
+
+{% block body %}
+<form action="" method="POST">
+    {% csrf_token %}
+    From: <input type="text" name="from">
+    발신인 번호: <input type="text" name="phone_from"><br>
+    To: <input type="text" name="to1">
+    수신인 번호: <input type="text" name="phone_to1">
+    메시지 : <textarea name="message1" id="message1" cols="30" rows="2"></textarea><br>
+    To: <input type="text" name="to2">
+    수신인 번호: <input type="text" name="phone_to2">
+    메시지 : <textarea name="message2" id="message2" cols="30" rows="2"></textarea><br>
+    To: <input type="text" name="to3">
+    수신인 번호: <input type="text" name="phone_to3">
+    메시지 : <textarea name="message3" id="message3" cols="30" rows="2"></textarea><br>
+    To: <input type="text" name="to4">
+    수신인 번호: <input type="text" name="phone_to4">
+    메시지 : <textarea name="message4" id="message4" cols="30" rows="2"></textarea><br>
+    To: <input type="text" name="to5">
+    수신인 번호: <input type="text" name="phone_to5">
+    메시지 : <textarea name="message5" id="message5" cols="30" rows="2"></textarea><br>
+    기간 : <input type="text" name="period">일<br>
+
+    <input type="submit" vallue="보내기">
+</form>
+
+
+{% endblock %}

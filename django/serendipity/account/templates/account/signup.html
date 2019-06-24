@@ -1,0 +1,34 @@
+{% load static %}
+{% load bootstrap4 %}
+
+<html lang="en">
+<head>
+    {% bootstrap_css %}
+    <title>Serendipity</title>
+    <style>
+        body { background-color: #065471; }
+        .title_img { width: 100%; }
+        .form-group { color: white; }
+        .col-md-4 { display: block; margin: 0px auto; }
+        .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited { background-color: #1a86ad;
+         border-color: #065471; display: block; margin: 0px auto; min-width:380px; }
+    </style>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <img class="title_img" src="{% static 'login/images/header_logo.png' %}" alt="logo">
+    <br><br>
+    <div class="col-md-4">
+        <form action="" class="bootstrap" method="POST">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            <hr>
+            {% buttons %}
+                <button type="submit" class="btn btn-primary">완료</button>
+            {% endbuttons %}
+            <hr>
+            <a href="{% url 'main:index' %}" class="btn btn-primary">메인 페이지</a>
+        </form>
+    </div>
+</body>
+</html>

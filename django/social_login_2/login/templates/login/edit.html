@@ -1,0 +1,27 @@
+{% extends 'login/base.html' %}
+
+{% block body %}
+
+<form action="" method="POST">
+    {% csrf_token %}
+    From: <input type="text" name="from" value ={{info_list.0.from_name}}>
+    발신인 번호: <input type="text" name="phone_from" value ={{info_list.0.phone_from}}><br>
+    To: <input type="text" name="to1" value="{{info_list.0.to_name}}">
+    수신인 번호: <input type="text" name="phone_to1" value="{{info_list.0.phone_to}}">
+    메시지 : <textarea name="message1" id="message1" cols="30" rows="2">{{info_list.0.message}}</textarea><br>
+    To: <input type="text" name="to2" value="{{info_list.1.to_name}}">
+    수신인 번호: <input type="text" name="phone_to2" value="{{info_list.1.phone_to}}">
+    메시지 : <textarea name="message2" id="message2" cols="30" rows="2">{{info_list.1.message}}</textarea><br>
+    To: <input type="text" name="to3" value="{{info_list.2.to_name}}">
+    수신인 번호: <input type="text" name="phone_to3" value="{{info_list.2.phone_to}}">
+    메시지 : <textarea name="message3" id="message3" cols="30" rows="2">{{info_list.2.message}}</textarea><br>
+    To: <input type="text" name="to4" value="{{info_list.3.to_name}}">
+    수신인 번호: <input type="text" name="phone_to4" value="{{info_list.3.phone_to}}">
+    메시지 : <textarea name="message4" id="message4" cols="30" rows="2">{{info_list.3.message}}</textarea><br>
+    To: <input type="text" name="to5" value="{{info_list.4.to_name}}">
+    수신인 번호: <input type="text" name="phone_to5" value="{{info_list.4.phone_to}}">
+    메시지 : <textarea name="message5" id="message5" cols="30" rows="2">{{info_list.4.message}}</textarea><br>
+    기간 : <input type="text" name="period" value="{{info_list.0.period}}">일<br>
+    <input type="submit" value="수정">
+</form>
+{% endblock %}
