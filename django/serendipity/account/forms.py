@@ -8,8 +8,8 @@ class UserCustomCreationForm(UserCreationForm):
         fields = ['username', 'phone_number', 'email']
         widgets = {
             'username': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '15자 이내로 입력 가능합니다.'}),
-            'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '010-0000-0000'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': '이메일을 입력하세요'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control', 'placeholder': '01012345678'}),
+            'email': forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'example@serendipity.com'}),
         }
         labels = {
             'username': '아이디',

@@ -1,17 +1,37 @@
+{% extends 'main_page/base.html' %}
 {% load static %}
 {% load bootstrap4 %}
 
+{% block body %}
 <html lang="en">
 <head>
     {% bootstrap_css %}
     <title>Serendipity</title>
     <style>
-        body { background-color: #065471; }
+        body { background-color: #FEFAEC; }
         .title_img { width: 100%; }
         .form-group { color: white; }
         .col-md-4 { display: block; margin: 0px auto; }
-        .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited { background-color: #1a86ad;
-         border-color: #065471; display: block; margin: 0px auto; min-width:380px; }
+        .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+            font-family: 'Sunflower', sans-serif;
+            color: #625772;
+            font-size: 17px;
+            font-weight: bold;
+            border-width: 3px;
+            border-radius: 10px;
+            background-color: #FEFAEC;
+            border-color: #625772;
+            border-style: solid;
+            margin: 0px auto;
+            min-width:380px; }
+
+        input:invalid {
+            background-color: #ffffff;
+        }
+
+        input:valid {
+            background-color: #ffffff;
+        }
     </style>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
@@ -24,11 +44,13 @@
             {% bootstrap_form form %}
             <hr>
             {% buttons %}
-                <button type="submit" class="btn btn-primary">완료</button>
+                <button type="submit" class="btn btn-primary">LOGIN</button>
             {% endbuttons %}
             <hr>
-            <a href="{% url 'main:index' %}" class="btn btn-primary">메인 페이지</a>
+                <a href="{% url 'main:index' %}" class="btn btn-primary">MAIN</a>
         </form>
+        <br><br>
     </div>
 </body>
 </html>
+{% endblock %}

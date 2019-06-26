@@ -282,13 +282,6 @@ def send_sms(photo):
 def photo(request, pk):
     photo = Photo.objects.get(pk=pk)
     date = photo.created_at
-    #save_date = date.strftime('%Y년 %m월 %d일 %H:%M')
-    # random_num_list = str(range(1,10))
-    # random_num_list = random_num_list + ['A','B','C','D','E']
-    # random_str = ''
-    # for i in range(0,5):
-    #     random_num = random.choice(random_num_list)
-    #     random_str = random_str + str(random_num)
 
     context = {'photo':photo, }
     return render(request, 'login/photo.html', context)
