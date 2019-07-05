@@ -426,3 +426,4 @@ board.delete()
 * **redirect 함수를 사용하지 않으면, '글쓰기' 페이지로 다시 이동하기가 어렵다. 따라서 게시글을 작성한 후, 바로 메인 페이지로 이동할 수 있도록 redirect 함수를 사용한다.**
 
 ![image](https://user-images.githubusercontent.com/42408554/59167270-55dfc280-8b6b-11e9-9e90-9edd4daa9b15.png)
+
