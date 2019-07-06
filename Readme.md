@@ -35,6 +35,7 @@
   python manage.py startapp '페이지 이름'
   ```
 
+
 ---
 
 
